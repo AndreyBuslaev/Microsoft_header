@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://www.microsoft.com/mwf/css/MWF_20200416_22921869/west-european/store-web-default/actionmenu/alert/ambientvideo/areaheading/autosuggest/badge/banner/button/carouselbase/contentplacement/contentplacementitem/contentrichblock/contenttoggle/dialog/divider/feature/featuregroup/flyout/glyph/heading/heroitem/highlightfeature/hyperlinkgroup/image/linknavigation/list/mediagallery/mosaic/mosaicplacement/multifeature/multislidecarousel/pagebehaviors/paragraph/pivot/select/selectbutton/selectmenu/singleslidecarousel/skiptomain/slider/systemrequirements/table?apiVersion=1.0&amp;include_base=true"
+        type="text/css" media="all">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        section {
+            width: 100%;
+            height: 120vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        li {
+            list-style: none;
+            padding: 0 16px 0 29px;
+        }
+
+        #menu-toggle {
+            opacity: 0;
+        }
+
+        #menu-toggle:checked~.menu-btn>span {
+            transform: rotate(45deg);
+        }
+
+        #menu-toggle:checked~.menu-btn>span::before {
+            top: 0;
+            transform: rotate(0);
+        }
+
+        #menu-toggle:checked~.menu-btn>span::after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+
+        .wrapper-burger-menu {
+            display: none;
+        }
+
+        .menu-btn {
+            display: flex;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .menu-btn>span,
+        .menu-btn>span::before,
+        .menu-btn>span::after {
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 1.4px;
+            background-color: #616161;
+            transition-duration: .25s;
+        }
+
+        .menu-btn>span::before {
+            content: '';
+            top: -5px;
+        }
+
+        .menu-btn>span::after {
+            content: '';
+            top: 5px;
+        }
+
+        .header-wrapper {
+            width: 100%;
+        }
+
+        .header-wrapper-mobile,
+        .header-wrapper-mobile>button {
+            display: none;
+        }
+
+        .wrapper-left {
+            display: flex;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 5%;
+        }
+
+        .logo {
+            padding-right: 26px;
+
+        }
+
+        .logo_img {
+            width: 108px;
+            height: 23px;
+            margin-bottom: 4px;
+            margin-left: 10px;
+        }
+
+        .line {
+            border-left: 2px solid #000;
+            height: 24px;
+            padding-right: 19px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .logo-text>a:hover,
+        .nav_btn:hover {
+            border-bottom: 2px solid black;
+        }
+
+        .btn {
+            border: none;
+            background-color: inherit;
+        }
+
+        .nav_btn {
+            width: 100%;
+            padding: 3px 0 2px;
+            font-size: 13px;
+            border-bottom: 2px solid white;
+            white-space: nowrap
+        }
+
+        .nav_btn::after {
+            font-family: "MWF-MDL2";
+            content: "";
+            position: absolute;
+            font-size: 8px;
+            display: inline-block;
+            color: currentColor;
+            font-weight: 700;
+            padding-top: 7px;
+            padding-left: 7px;
+        }
+
+        .nav {
+            height: 100%;
+        }
+
+        .nav-menu {
+            height: 100%;
+            padding-right: 31px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav>ul {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .link-support {
+            padding: 0 13px 0 25px;
+        }
+
+        .nav a {
+            font-size: 13px;
+            padding-bottom: 2px;
+            border-bottom: 2px solid white;
+        }
+
+        .wrapper-right {
+            display: flex;
+            align-items: center;
+            padding-left: 22px;
+            justify-content: flex-end;
+        }
+
+        .icons {
+            display: flex;
+        }
+
+        .icon {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 3px;
+        }
+
+        .search {
+            margin-right: 18px;
+            padding-bottom: 5px;
+        }
+
+        .presentation {
+            font-size: 13px;
+            border-bottom: 2px solid white;
+        }
+
+        .presentation:hover {
+            border-bottom: 2px solid black
+        }
+
+        .search::after {
+            font-family: "MWF-MDL2";
+            content: "";
+            font-size: 16px;
+            margin-left: 6px;
+        }
+
+        .basket::after {
+            font-family: "MWF-MDL2";
+            content: "";
+            font-size: 16px;
+            margin-left: 6px;
+        }
+
+        .wrapper-user {
+            display: flex;
+            align-items: center;
+            margin-left: 16px;
+        }
+
+        .user {
+            width: 32px;
+            height: 32px;
+            margin: 0 8px 1px 12px;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' stroke='%23707070'%3E%3Cg class='mectrl_stroke' fill='none'%3E%3Ccircle cx='32' cy='32' r='30.25' stroke-width='1.5'/%3E%3Cg transform='matrix(.9 0 0 .9 10.431 10.431)' stroke-width='2'%3E%3Ccircle cx='24.25' cy='18' r='9'/%3E%3Cpath d='M11.2 40a1 1 0 1126.1 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            cursor: pointer;
+        }
+
+        .screen {
+            display: none;
+        }
+    </style>
+    <style>
+        @media (min-width: 1600px) {
+            .line {
+                padding-right: 33px;
+            }
+        }
+
+        @media (max-width: 1599px) {
+            .line {
+                padding-right: 25px;
+            }
+        }
+
+        @media (max-width: 1399px) {
+            .presentation {
+                display: none;
+            }
+
+            .wrapper-user {
+                margin-left: 2px;
+            }
+
+            .search {
+                margin-right: 0;
+            }
+
+            .icon {
+                margin-left: 16px;
+            }
+
+            .basket::after {
+                padding-bottom: 2px;
+            }
+
+            .nav-menu {
+                padding-right: 34px;
+            }
+
+            .line {
+                padding-right: 19px;
+            }
+
+            li {
+                padding: 0px 7px 0 26px;
+            }
+        }
+
+        @media (max-width: 1170px) {
+            .screen {
+                display: block;
+            }
+
+            .screen1 {
+                display: none;
+            }
+
+            .nav>ul>li:last-child {
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 1090px) {
+            .screen2 {
+                display: none;
+            }
+
+            .container {
+                margin: 0 2%;
+            }
+        }
+
+        @media (max-width: 930px) {
+            .screen3 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .header-wrapper {
+                border-bottom: 1px solid #e6e6e6;
+            }
+
+            .logo_img {
+                margin-left: 25px
+            }
+
+            .header-wrapper-mobile {
+                display: block;
+                border-bottom: 1px solid #e6e6e6;
+                height: 34px;
+                display: flex;
+                align-content: center;
+            }
+
+            .header-wrapper-mobile>button {
+                display: block;
+                font-size: 15px;
+                font-weight: 600;
+                margin-left: 15px;
+            }
+
+            .mobile-btn::after {
+                font-family: "MWF-MDL2";
+                content: "";
+                font-size: 12px;
+                font-weight: 700;
+                padding-left: 11px;
+                position: relative;
+                top: 2px;
+            }
+
+            .nav,
+            .logo-text,
+            .nav-menu,
+            .search:first-child {
+                display: none;
+            }
+
+            .container {
+                margin: 0 1%;
+                height: 53px;
+            }
+
+            .search::after {
+                margin-left: 15px;
+                padding-top: 3px;
+            }
+
+            .wrapper-burger-menu {
+                display: flex;
+                align-items: center;
+                margin-left: 8px;
+                padding-bottom: 3px;
+            }
+
+            .logo {
+                padding: 0px 0 2px 6px;
+            }
+
+            .icon {
+                padding-bottom: 1px;
+            }
+
+            .wrapper-right {
+                padding-left: 0;
+            }
+
+            .wrapper-user {
+                margin-left: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="display: flex; flex-direction: column;">
+        <div class="header-wrapper" style="display: flex; justify-content: center;">
+            <div class="container">
+                <div class="wrapper-burger-menu">
+                    <div class="burger-menu">
+                        <input id="menu-toggle" type="checkbox" />
+                        <label class="menu-btn" for="menu-toggle">
+                            <span></span>
+                        </label>
+                    </div>
+                    <button class="icon search btn icon_btn" title="Search Microsoft.com"><span
+                            class="presentation">Search</span></button>
+                </div>
+                <div class="wrapper-left">
+                    <div class="logo">
+                        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
+                            alt="logo_img" class="logo_img">
+                    </div>
+                    <div class="logo-text">
+                        <span class="line"></span>
+                        <a href="#" class="text">Surface</a>
+                    </div>
+                    <div class="nav">
+                        <ul>
+                            <li><button class="nav_btn btn">Computers</button></li>
+                            <li class="screen3"><button class="nav_btn btn">Computers for Business</button></li>
+                            <li class="screen2"><button class="nav_btn btn">Accessories</button></li>
+                            <li class="screen1"><button class="nav_btn btn">Shop now</button></li>
+                            <li class="screen1 link-support"><a href="#">Support</a></li>
+                            <li class="screen"><button class="nav_btn btn">More</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="wrapper-right">
+                    <div class="nav-menu">
+                        <button class="nav_btn btn">All Microsoft</button>
+                    </div>
+                    <div class="icons">
+                        <button class="icon search btn icon_btn" title="Search Microsoft.com"><span
+                                class="presentation">Search</span></button>
+                        <button class="icon basket btn icon_btn" title="0 items in shopping cart"><span
+                                class="presentation">Cart</span></button>
+                        <div class="wrapper-user">
+                            <a href="#" class="presentation presentation__user">User</a>
+                            <div class="icon user" title="Account manager"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-wrapper-mobile">
+            <button class="btn nav-btn mobile-btn">Surface</button>
+        </div>
+    </header>
+    <section></section>
+</body>
+
+</html>
